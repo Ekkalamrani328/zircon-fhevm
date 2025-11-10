@@ -4,64 +4,81 @@
 
 <div align="center">
 
-**ZIRCON — Dark Liquidity Intent Layer (fhEVM)**  
-Encrypted Orderflow • Unobservable Matching • Threshold Reveal
-
-<br>
-
-npm install
-npm run build
-npm run dev
-
-<div align="center">
+### **ZIRCON — Dark Liquidity Intent Layer (fhEVM)**  
+**Private Orderflow · Encrypted Matching · Optional Threshold Reveal**
 
 [![📚 Documentation](https://img.shields.io/badge/📚_Documentation-003366?style=for-the-badge)](https://ekkalamrani328.github.io/zircon-fhevm/)
-[![🚀 Live Demo](https://img.shields.io/badge/🚀_Live_Demo-1AAB8A?style=for-the-badge)](https://ekkalamrani328.github.io/zircon-fhevm/demo/)
-[![👤 Profile](https://img.shields.io/badge/👤_Developer_Profile-000?style=for-the-badge)](https://github.com/Ekkalamrani328)
-
-</div>
-
+[![🚀 Live Demo](https://img.shields.io/badge/🚀_Live_Demo-10b981?style=for-the-badge)](https://ekkalamrani328.github.io/zircon-fhevm/demo/)
+[![👤 Developer Profile](https://img.shields.io/badge/👤_Developer_Profile-000?style=for-the-badge)](https://github.com/Ekkalamrani328)
 
 </div>
 
 ---
 
-ZIRCON provides a confidential execution environment for intent-based trading using **Fully Homomorphic Encryption (FHE)** deployed on the **Zama fhEVM** runtime.
+## 🧭 Overview
 
-The system ensures that **all orderflow and matching logic remain encrypted**, enabling secure and private execution of intent-based interactions.
+**ZIRCON** is a **privacy-preserving intent layer** for decentralized trading.  
+It ensures that **price, amount, and trade direction remain encrypted** during submission *and* matching.  
+Execution is powered by **Fully Homomorphic Encryption (FHE)** on **Zama’s fhEVM**, allowing smart contracts to compute **directly on ciphertext**.
+
+> **No plaintext orderflow ever touches the chain.**  
+> Matching is unobservable and settlement can be revealed only when necessary.
 
 ---
 
-System Architecture
+## 🔐 Why FHE + Zama fhEVM?
+
+**Fully Homomorphic Encryption (FHE)** allows computations to run **while data stays encrypted**.  
+Zama’s **fhEVM** extends Ethereum so that encrypted integers can be compared, matched, and routed **inside smart contracts**, without decrypting.
+
+| Benefit | Description |
+|--------|-------------|
+| **Encrypted orderflow** | Traders never leak intent to mempools, validators, or MEV bots. |
+| **Private matching** | Matching logic uses `fhe_compare` / `fhe_select` — no visibility to observers. |
+| **Minimal reveal** | Only settlement outputs must be revealed — and even that can be threshold-gated. |
+
+This makes ZIRCON suitable for:  
+- Dark liquidity venues  
+- OTC intent auctions  
+- MEV-resistant marketplaces  
+- Private RFQ routing  
+
+---
+
+## 🧱 System Architecture
 
 <p align="center">
   <img src="zircon-fhe-intents/assets/diagram-zircon.svg" width="90%">
 </p>
 
-### Components
-
-| Component | Responsibility | Trust Boundary |
-|---------|----------------|----------------|
-| **Client / Wallet** | Encrypts intents using public FHE key. Maintains local cleartext state. | User-side only. Private. |
-| **fhEVM Smart Contract** | Executes matching logic *directly* over ciphertext. Emits encrypted state transitions. | On-chain. Zero plaintext disclosure. |
-| **Threshold Committee (Optional)** | Participates only in controlled reveal scenarios (settlement / view keys / regulatory modes). | Distributed & auditable. |
+| Component | Responsibility | Visibility |
+|---------|----------------|-------------|
+| **Client / Wallet** | Encrypts intents, stores decrypted history locally. | Private to the user. |
+| **fhEVM Smart Contract** | Performs encrypted comparisons and matching. | Public chain, but ciphertext only. |
+| **Threshold Committee (optional)** | Provides controlled, auditable reveal for settlement or dispute resolution. | Distributed trust. |
 
 ---
 
-## 3. Security Properties
+## 🗺️ Project Roadmap (Rencana Pengembangan)
 
-| Property | Guarantee |
-|---------|-----------|
-| **Orderflow Privacy** | No participant, relayer, or validator can infer trade intent. |
-| **Unobservable Matching** | Matching logic executes over encrypted values (FHE). |
-| **Minimal Reveal** | Settlement requires only cryptographically bounded reveal. |
-| **EVM Compatibility** | Contracts deployable on any fhEVM network instance. |
+<p align="center">
+  <img src="zircon-fhe-intents/assets/zircon-roadmap.svg" width="90%" />
+</p>
 
-## Quick Start
+**Current Stage:** **Phase I — Foundations** *(✔ Delivered)*  
+- Public documentation (MkDocs + GitHub Pages)  
+- Private-by-default demo UI  
+- Local encrypted order history  
+- Minimal encrypted intent commitment model  
 
-[![🚀 Live Demo]
+**Future phases are exploratory.**  
+Roadmap defines direction — not obligation.
 
-## 📜 License
-MIT © 2025 — Iremsena Development Initiative
+---
 
-</div>
+## 🚀 Quick Start (Local Development)
+
+```bash
+npm install
+npm run build
+npm run dev
