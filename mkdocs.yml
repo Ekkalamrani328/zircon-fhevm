@@ -1,6 +1,5 @@
 cat > mkdocs.yml <<'YAML'
 site_name: ZIRCON — Dark Liquidity Intent Layer
-
 docs_dir: zircon-fhe-intents/docs
 
 theme:
