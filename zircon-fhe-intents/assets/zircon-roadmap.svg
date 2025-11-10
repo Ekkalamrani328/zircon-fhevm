@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#0a0f1a"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5b21b6"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <style>
+      .h1{fill:#e5e7eb;font:800 30px/1.2 Inter,Segoe UI,Roboto,Arial}
+      .h2{fill:#e5e7eb;font:700 20px/1.2 Inter,Segoe UI,Roboto,Arial}
+      .sub{fill:#a5b4c9;font:500 14px/1.4 Inter,Segoe UI,Roboto,Arial}
+      .box{fill:#0f172a;stroke:#1f2a44;stroke-width:2}
+      .dot{fill:url(#pill);}
+      .line{stroke:#334155;stroke-width:2}
+      .tick{fill:#94a3b8;font:600 12px/1 ui-monospace,Consolas}
+      .tag{fill:#111827;stroke:#334155;stroke-width:1}
+      .tagtxt{fill:#cbd5e1;font:600 12px/1 Inter}
+      .cardtitle{fill:#e2e8f0;font:700 18px/1 Inter}
+      .li{fill:#cbd5e1;font:500 14px/1.4 Inter}
+      .ok{fill:#10b981;font-weight:700}
+      .soon{fill:#f59e0b;font-weight:700}
+    </style>
+  </defs>
+
+  <rect width="1400" height="820" fill="url(#bg)"/>
+  <text x="700" y="58" text-anchor="middle" class="h1">ZIRCON — Product Roadmap</text>
+  <text x="700" y="86" text-anchor="middle" class="sub">Private intent layer on Zama fhEVM · compute on encrypted data · privacy-by-default</text>
+
+  <line x1="140" y1="150" x2="1260" y2="150" class="line"/>
+
+  <circle cx="260" cy="150" r="7" class="dot"/>
+  <circle cx="520" cy="150" r="7" class="dot"/>
+  <circle cx="780" cy="150" r="7" class="dot"/>
+  <circle cx="1040" cy="150" r="7" class="dot"/>
+
+  <text x="260" y="180" text-anchor="middle" class="tick">Phase I</text>
+  <text x="520" y="180" text-anchor="middle" class="tick">Phase II</text>
+  <text x="780" y="180" text-anchor="middle" class="tick">Phase III</text>
+  <text x="1040" y="180" text-anchor="middle" class="tick">Phase IV</text>
+
+  <rect x="120" y="220" width="320" height="230" rx="16" ry="16" class="box"/>
+  <text x="140" y="252" class="cardtitle">Phase I — Foundations ●</text>
+  <text x="140" y="280" class="li">• Public docs (MkDocs + Pages)</text>
+  <text x="140" y="304" class="li">• Demo UI (private-by-default)</text>
+  <text x="140" y="328" class="li">• Local encrypted history</text>
+  <text x="140" y="352" class="li">• Minimal on-chain events: CipherIntent</text>
+  <rect x="140" y="370" width="138" height="26" rx="10" ry="10" class="tag"/>
+  <text x="153" y="388" class="tagtxt">Status: Delivered</text>
+
+  <rect x="440" y="220" width="320" height="230" rx="16" ry="16" class="box"/>
+  <text x="460" y="252" class="cardtitle">Phase II — Private Wallet ●</text>
+  <text x="460" y="280" class="li">• Wallet connect (sign-only)</text>
+  <text x="460" y="304" class="li">• Meta-transactions (ERC-2771)</text>
+  <text x="460" y="328" class="li">• Optional AA (ERC-4337)</text>
+  <text x="460" y="352" class="li">• Stealth identity (unlinkable)</text>
+  <rect x="460" y="370" width="148" height="26" rx="10" ry="10" class="tag"/>
+  <text x="473" y="388" class="tagtxt">Status: In progress</text>
+
+  <rect x="760" y="220" width="320" height="230" rx="16" ry="16" class="box"/>
+  <text x="780" y="252" class="cardtitle">Phase III — Encrypted Matching</text>
+  <text x="780" y="280" class="li">• fhe_compare / fhe_select</text>
+  <text x="780" y="304" class="li">• Dark orderbook / intent routing</text>
+  <text x="780" y="328" class="li">• Batching and fairness window</text>
+  <text x="780" y="352" class="li">• Gas/latency benchmarks</text>
+  <rect x="780" y="370" width="126" height="26" rx="10" ry="10" class="tag"/>
+  <text x="793" y="388" class="tagtxt">Status: Planned</text>
+
+  <rect x="1080" y="220" width="320" height="230" rx="16" ry="16" class="box"/>
+  <text x="1100" y="252" class="cardtitle">Phase IV — Compliance and DX</text>
+  <text x="1100" y="280" class="li">• Threshold committee (optional reveal)</text>
+  <text x="1100" y="304" class="li">• Audit and monitoring hooks</text>
+  <text x="1100" y="328" class="li">• Grants and partnerships</text>
+  <text x="1100" y="352" class="li">• SDK and templates</text>
+  <rect x="1100" y="370" width="126" height="26" rx="10" ry="10" class="tag"/>
+  <text x="1113" y="388" class="tagtxt">Status: Planned</text>
+
+</svg>
