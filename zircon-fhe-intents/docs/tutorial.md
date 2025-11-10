@@ -1,39 +1,85 @@
-⚙️ **Quick Tutorial** (1-Minute Overview)
+# ZIRCON Demo — Quick Tutorial
 
-This tutorial demonstrates the minimal workflow of ZIRCON — the Dark Liquidity Intent Layer powered by Fully Homomorphic Encryption (FHE) on fhEVM.
+This demo shows how **ZIRCON** performs **encrypted intent submission** and **private matching** using client-side encryption and local-only decrypted history.
 
-1. **Submit Phase**
+## 🌐 What This Demo Represents
 
-    The client encrypts trade parameters (price, amount, side) into ciphertexts → ctPrice, ctAmount, ctSide, plus a random nonce.
+| Component | Behavior | Privacy |
+|---------|----------|---------|
+| Submit Intent | User inputs price, amount, side | Values are **encrypted before stored** |
+| Orderbook | Shows only ciphertext | **No plaintext is revealed** |
+| My Orders | Shows decrypted values locally | **Visible only to the owner** |
 
-    # Each submission stores an encrypted local record:
+The chain (or public observers) **never learn** price, amount, or side.
 
-| json                                     |
-| **orderId, price, amount, side, txHash** |
+---
 
-This record remains visible only to the owner through local decryption.
---------------------------------------------------------------------------
-2. **On-Chain Execution**
+## 🚀 Run the Demo (Local)
 
-    # The smart contract method submit() saves the encrypted payload on-chain.
-    # The matching process (tryMatch()) operates with secure functions:
-     - fhe_compare() → private comparison
-     - fhe_select() → conditional selection under encryption
-    # The contract emits lightweight public events:
-     - OrderSubmitted / OrderMatched    
-    (no plaintext values are ever revealed).
----------------------------------------------------------------------------
-3. **Owner-Side Decryption**
-    - The wallet or client reads the locally stored ciphertexts.
-    - Decryption is performed entirely on the user side, enabling a private view of full order  history and states.
----------------------------------------------------------------------------
-4. **(Optional) Reveal Protocol**
+```bash
+cd zircon-fhe-intents/packages/zircon-frontend
+python3 -m http.server 8080
+```
 
-    # A T-of-N threshold committee can jointly reveal minimal artifacts (e.g., matched amount) only if required for:
-    - Settlement
-    - Arbitration / dispute resolution
-    # The protocol ensures zero unnecessary data exposure.
-----------------------------------------------------------------------------
-💡 Summary
+Then open:
 
-ZIRCON demonstrates how FHE enables encrypted order matching, maintaining full privacy for traders while still allowing transparent settlement when required
+```
+http://localhost:8080
+```
+
+---
+
+## 📝 Workflow
+
+### 1) Submit Encrypted Intent
+You enter:
+- Side (Buy/Sell)
+- Price
+- Amount
+
+The client locally encrypts values and generates:
+```
+{ ctSide, ctPrice, ctAmount, orderId, timestamp }
+```
+
+This is stored in an encrypted orderbook.
+
+### 2) Minimal Public Output
+The public UI only displays:
+```
+Status: submitted / matched
+```
+No numbers, no side, no direction.
+
+### 3) Owner Private History
+Your browser keeps a local decrypted list:
+
+| Order ID | Side | Price | Amount | txHash |
+|---------|------|-------|--------|-------|
+
+This history **never touches the blockchain**.
+
+---
+
+## 🧩 Key Idea
+
+ZIRCON demonstrates **private-by-default trading** using **FHE concepts**:
+- **Encrypted orderflow**
+- **Private price/size matching**
+- **Local decryption for user-only visibility**
+- **Optional threshold reveal for settlement**
+
+---
+
+## ✅ End Result
+
+Traders keep **full privacy**, while the system still allows:
+- verifiable execution
+- optional settlement proofs
+- minimal leakage
+
+Encrypted intent execution — **without exposing strategy**.
+
+---
+
+MIT © 2025 Iremsena — ZIRCON
