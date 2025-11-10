@@ -1,0 +1,36 @@
+name: Docs & Demo
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write   # penting untuk membuat/menulis branch gh-pages
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install MkDocs
+        run: pip install mkdocs-material
+
+      - name: Build Docs
+        run: mkdocs build --strict
+
+      - name: Bundle Demo into site/demo
+        run: |
+          mkdir -p site/demo
+          cp -a zircon-fhe-intents/packages/zircon-frontend/. site/demo/
+          touch site/.nojekyll
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

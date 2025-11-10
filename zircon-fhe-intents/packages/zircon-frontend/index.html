@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ZIRCON — Dark Liquidity Intent Layer (Demo)</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>ZIRCON — Dark Liquidity Intent Layer</h1>
+      <p class="lead">Encrypted orderflow · Unobservable matching · Threshold reveal (Zama fhEVM)</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+      <section class="card">
+        <h2>1) Submit Encrypted Intent</h2>
+        <label>Side</label>
+        <select id="side">
+          <option>Buy</option>
+          <option>Sell</option>
+        </select>
+        <div class="row">
+          <div style="flex:1">
+            <label>Price</label>
+            <input id="price" type="number" placeholder="200"/>
+          </div>
+          <div style="flex:1">
+            <label>Amount</label>
+            <input id="amount" type="number" placeholder="2"/>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button onclick="submitIntent()">Submit</button>
+          <button class="secondary" onclick="tryMatch()">Try Match</button>
+          <button class="secondary" onclick="resetAll()">Reset</button>
+        </div>
+        <p class="muted" style="margin-top:8px">Cipher payload (simulasi):</p>
+        <pre id="ct"></pre>
+      </section>
+
+      <section class="card">
+        <h2>2) Minimal Public Output</h2>
+        <p>Status: <span id="status" class="warn">Idle</span></p>
+        <p class="muted">Publik hanya melihat status (submitted/matched). Tidak ada nilai (price/amount/side) yang dibocorkan.</p>
+        <h3 style="margin-top:14px">3) My Orders (Local Decrypt)</h3>
+        <table class="table" id="orders">
+          <thead><tr><th>Order ID</th><th>Side</th><th>Price</th><th>Amount</th><th>txHash</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="muted">Data di atas berasal dari riwayat lokal (disimulasikan). Pada implementasi nyata, wallet menyimpan dan mendekripsi data ini secara lokal.</p>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:20px">
+      <h2>Encrypted Orderbook (Public)</h2>
+      <div id="book" class="muted">(empty)</div>
+    </section>
+
+    <section class="card">
+      <h2>Notes</h2>
+      <ul>
+        <li>Ganti <code class="inline">pseudoEncrypt()</code> dengan SDK Zama FHE/fhEVM.</li>
+        <li>Matching: gunakan <code class="inline">fhe_compare</code> / <code class="inline">fhe_select</code> di kontrak.</li>
+        <li>Owner UX: riwayat disimpan & didecrypt lokal (contoh tabel "My Orders").</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">MIT © 2025 Iremsena — ZIRCON (fhEVM)</div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+site_name: ZIRCON — Dark Liquidity Intent Layer
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.expand
+    - content.code.copy
+nav:
+  - Overview: index.md
+  - Summary: index.md   # (jika ringkasannya kamu pindahkan ke atas index, baris ini bisa dihapus)
+  - FHE Intro: FHE-intro.md
+  - Architecture: architecture.md
+  - Integration (fhEVM): Zircon-fhe-integration.md
+  - Tutorial (Demo): tutorial.md
+  - Case Study: Case-Study.md
+  - Vision: Zircon-vision.md
+  - FAQ: FAQ.md

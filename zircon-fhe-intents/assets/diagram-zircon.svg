@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1000" height="420" viewBox="0 0 1000 420">
+
+  <!-- ========== DEFINITIONS ========== -->
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E3F2FD"/>
+      <stop offset="1" stop-color="#BBDEFB"/>
+    </linearGradient>
+
+    <linearGradient id="g2" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E8F5E9"/>
+      <stop offset="1" stop-color="#C8E6C9"/>
+    </linearGradient>
+
+    <linearGradient id="g3" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#FFF8E1"/>
+      <stop offset="1" stop-color="#FFECB3"/>
+    </linearGradient>
+
+    <!-- Styles -->
+    <style>
+      .title      { font: 700 20px "Helvetica Neue", Arial; fill: #0D47A1; }
+      .subtitle   { font: 400 12px "Helvetica Neue", Arial; fill: #263238; }
+      .box-title  { font: 700 14px "Helvetica Neue", Arial; fill: #0B3954; }
+      .box-text   { font: 400 12px "Helvetica Neue", Arial; fill: #263238; }
+      .small      { font: 400 11px "Helvetica Neue", Arial; fill: #37474F; }
+      .arrow      { fill: none; stroke: #607D8B; stroke-width: 2; marker-end: url(#arrowhead); }
+      .shadow     { filter: url(#shadow); }
+    </style>
+
+    <!-- Arrowhead Marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7"
+            refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#607D8B"/>
+    </marker>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6"
+                    flood-color="#000" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- ========== HEADER ========== -->
+  <text x="40" y="40" class="title">
+    ZIRCON — Dark Liquidity Intent Layer (fhEVM)
+  </text>
+  <text x="40" y="64" class="subtitle">
+    Privacy-preserving order matching using Fully Homomorphic Encryption (FHE)
+  </text>
+
+  <!-- ========== CLIENT BOX ========== -->
+  <g transform="translate(60,100)">
+    <rect x="0" y="0" rx="12" ry="12" width="260" height="140"
+          fill="url(#g1)" stroke="#90CAF9" stroke-width="1.5"
+          class="shadow"/>
+    <text x="20" y="32" class="box-title">Client / Wallet</text>
+    <text x="20" y="56" class="box-text">• Encrypts order: ctSide, ctPrice, ctAmount</text>
+    <text x="20" y="76" class="box-text">• Stores encrypted local history</text>
+    <text x="20" y="96" class="box-text">• Decrypts locally for owner view</text>
+    <rect x="18" y="106" width="220" height="20" rx="6" fill="#FFFFFF" opacity="0.6"/>
+    <text x="28" y="120" class="small">Client-side key material (kept private)</text>
+  </g>
+
+  <!-- ========== CONTRACT BOX ========== -->
+  <g transform="translate(400,80)">
+    <rect x="0" y="0" rx="14" ry="14" width="320" height="180"
+          fill="url(#g2)" stroke="#A5D6A7" stroke-width="1.5"
+          class="shadow"/>
+    <text x="20" y="36" class="box-title">fhEVM Smart Contract</text>
+    <text x="20" y="62" class="box-text">• Stores ciphertext only (no plaintext)</text>
+    <text x="20" y="82" class="box-text">• Executes FHE ops: fhe_compare, fhe_select</text>
+    <text x="20" y="102" class="box-text">• Emits minimal events (OrderSubmitted / Matched)</text>
+    <text x="20" y="132" class="small">
+      On-chain: ciphertext storage &amp; homomorphic computation
+    </text>
+  </g>
+
+  <!-- ========== COMMITTEE BOX ========== -->
+  <g transform="translate(770,120)">
+    <rect x="0" y="0" rx="12" ry="12" width="210" height="130"
+          fill="url(#g3)" stroke="#FFD54F" stroke-width="1.5"
+          class="shadow"/>
+    <text x="18" y="32" class="box-title">Threshold Committee</text>
+    <text x="18" y="56" class="box-text">• Optional T-of-N reveal</text>
+    <text x="18" y="76" class="box-text">• Minimal disclosure for settlements</text>
+    <foreignObject x="18" y="90" width="180" height="36">
+      <div xmlns="http://www.w3.org/1999/xhtml"
+           style="font: 11px 'Helvetica Neue', Arial; color:#37474F; line-height:1.3;">
+        Multi-party decryption (no single-actor reveal)
+      </div>
+    </foreignObject>
+  </g>
+
+  <!-- ========== FLOW ARROWS ========== -->
+  <path class="arrow" d="M320,170 L400,170"/> <!-- Client → Contract -->
+  <path class="arrow" d="M720,170 L770,170"/> <!-- Contract → Committee -->
+
+  <!-- ========== FOOTER NOTES ========== -->
+  <text x="40" y="360" class="small">
+    Note: All numeric values remain encrypted. Events carry identifiers and status only.
+  </text>
+  <text x="40" y="380" class="small">
+    Powered by Zama fhEVM — fully homomorphic primitives on EVM.
+  </text>
+
+  <text x="40" y="400" class="small">MIT @Ekkalamrani</text>
+</svg>

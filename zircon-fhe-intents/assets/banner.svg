@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#g)"/>
+  <g transform="translate(60,90)">
+    <text x="0" y="0" fill="#E5E7EB" font-family="Inter,ui-sans-serif" font-size="42" font-weight="700">
+      ZIRCON — Dark Liquidity Intent Layer
+    </text>
+    <text x="0" y="56" fill="#93A3B8" font-family="Inter,ui-sans-serif" font-size="20">
+      Encrypted orderflow · Unobservable matching · Threshold reveal (on Zama fhEVM)
+    </text>
+  </g>
+</svg>
