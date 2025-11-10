@@ -1,11 +1,12 @@
-cat > mkdocs.yml <<'YAML'
-site_name: ZIRCON — Dark Liquidity Intent Layer
+site_name: "ZIRCON — Dark Liquidity Intent Layer"
+site_url: https://ekkalamrani328.github.io/zircon-fhevm/
+repo_url: https://github.com/Ekkalamrani328/zircon-fhevm
+
 docs_dir: zircon-fhe-intents/docs
 
 theme:
   name: material
   features:
-    - navigation.instant
     - navigation.expand
     - content.code.copy
 
@@ -18,4 +19,3 @@ nav:
   - Case Study: Case-Study.md
   - Vision: Zircon-vision.md
   - FAQ: FAQ.md
-YAML
