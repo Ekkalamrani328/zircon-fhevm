@@ -9,6 +9,7 @@ theme:
   features:
     - navigation.expand
     - content.code.copy
+nl -ba mkdocs.yml | sed -n '1,12p'
 
 nav:
   - Home: index.md
