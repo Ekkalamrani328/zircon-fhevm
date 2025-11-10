@@ -56,6 +56,4 @@ Next phases are **optional** and exploratory.
 ### Quick Start
 
 ```bash
-npm install
-npm run build
-npm run dev
+👉 For full documentation, tutorials, and integration guide, see: /zircon-fhe-intents/docs/index.md
