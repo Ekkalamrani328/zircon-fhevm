@@ -1,74 +1,23 @@
 # ZIRCON Docs
 
-Welcome.
-# ZIRCON — Dark Liquidity Intent Layer (fhEVM)
+Welcome to the documentation hub. Pick a section to explore:
 
-ZIRCON is a private intent execution layer built on **Fully Homomorphic Encryption (FHE)** using **Zama's fhEVM**.  
-It enables **encrypted order submission and matching**, while keeping trading strategies and liquidity flow **completely private**.
+- 👉 **Architecture** — fhEVM order-matching design  
+  [[Open]](architecture.md)
+- 🔐 **FHE Intro** — what FHE is and why fhEVM matters  
+  [[Open]](FHE-intro.md)
+- 🔧 **Integration (fhEVM)** — using `fhe_compare` / `fhe_select`  
+  [[Open]](Zircon-fhe-integration.md)
+- 🧪 **Tutorial (Demo)** — run the private-by-default UI  
+  [[Open]](tutorial.md)
+- 🗂️ **Case Study** — example use cases  
+  [[Open]](Case-Study.md)
+- 🌱 **Vision** — long-term direction  
+  [[Open]](Zircon-vision.md)
+- ❓ **FAQ** — common questions  
+  [[Open]](FAQ.md)
 
-## 🔒 Why Privacy Matters
-Traditional blockchains expose all transaction data publicly:
-- Orders and prices are visible
-- MEV bots can copy or manipulate strategies
-- Traders lose edge and anonymity
+---
 
-ZIRCON prevents this by **never revealing order values on-chain**.
-
-## 🧬 Relationship to Zama FHE / fhEVM
-| Component | Role |
-|---------|------|
-| **ZIRCON** | Collects & matches **encrypted** trading intents |
-| **Zama fhEVM** | Computes directly over **encrypted** values (`fhe_compare`, `fhe_select`) without decryption |
-
-This means the system can match orders **without ever exposing their values**.
-
-```
-User → Encrypt Order → Submit → Smart Contract Matches While Still Encrypted
-```
-
-No plaintext is leaked to the mempool, chain, validators, or indexers.
-
-## 🚫 Why Wallet Login Is Not Used Yet
-Connecting a wallet directly would expose the sender's address:
-
-| If wallet sends tx | Result |
-|---|---|
-| Address is visible on-chain | Identity is no longer private |
-| Orderflow becomes traceable | Strategy is revealed |
-| Privacy model breaks | Front-running risk returns |
-
-To prevent this, the demo uses:
-- Local encrypted history storage
-- No on-chain identity linkage
-- No wallet address exposure
-
-## ✅ Wallet Support (Coming Soon)
-Wallets **will be added**, but only in **privacy-preserving mode**:
-
-| Mode | Privacy | Method |
-|---|---|---|
-| Meta-Transactions (ERC‑2771) | High | Wallet signs, **relayer sends** the tx |
-| Account Abstraction (ERC‑4337) | Very High | Gasless + stealth identities |
-| FHE Key-Derived Session Keys | Max | Wallet proves identity **without revealing address** |
-
-## 🛠️ Current Demo Features
-| Feature | Status |
-|---|---|
-| Encrypted intent submission | ✅ |
-| Local decrypted order history | ✅ |
-| Encrypted public orderbook | ✅ |
-| On-chain ciphertext event reading | ✅ |
-| Wallet integration (private mode) | 🔜 |
-
-## 🧱 File Structure
-```
-zircon-frontend/
- ├─ index.html        # UI
- ├─ styles.css        # Layout & visuals
- ├─ app.js            # Logic + encrypted state
- ├─ config.json       # RPC & contract (optional)
- └─ abi.intent.json   # Event ABI for CipherIntent
-```
-
-## 📜 License
-MIT © 2025 — Iremsena Development Initiative
+## Roadmap
+<img src="../assets/zircon-roadmap.svg" width="100%" alt="Roadmap">
