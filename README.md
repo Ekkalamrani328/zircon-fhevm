@@ -40,6 +40,10 @@ Trade parameters (price, amount, side) are **encrypted before submission** and *
 | fhEVM Contract | Public (ciphertext only) | Performs encrypted matching. |
 | Committee *(optional)* | Controlled | Allows partial reveal only if required. |
 
+
+<p align="center">
+  <img src="zircon-fhe-intents/assets/diagram-zircon.svg" width="90%">
+</p>
 ---
 
 ### **Roadmap (Summary)**
